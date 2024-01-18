@@ -109,6 +109,12 @@ def detect_ball(start_frame, cap):
 
         # Fit a polynomial of degree 2 (you can adjust the degree)
         coefficients = np.polyfit(x, y, 2)
+        #(coefficients)
+        if coefficients[0] < 0:
+            print(coefficients)
+            coefficients[0] = -coefficients[0]
+            coefficients[1] = -coefficients[1]
+
 
         # Get the z-scores to filter out erroneous points
         z_scores = np.abs(stats.zscore(y))
